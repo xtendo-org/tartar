@@ -1,5 +1,18 @@
 # tartar begins
 
+function prompt_long_pwd --description 'Print the current working directory'
+    set -l maybe_pwd (echo $PWD | sed -e "s|^$HOME|~|")
+    if echo $maybe_pwd | grep -q "^~/code/"
+        echo $maybe_pwd | sed -e "s|^~/code/||"
+    else
+        if echo $maybe_pwd | grep -q "^~/work/"
+            echo $maybe_pwd | sed -e "s|^~/work/||"
+        else
+            echo $maybe_pwd
+        end
+    end
+end
+
 set -g tartar_bg NONE
 
 function tartar_prompt_open
