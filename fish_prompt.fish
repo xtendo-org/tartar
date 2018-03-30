@@ -88,7 +88,7 @@ function fish_prompt
     end
 
     # current jobs
-    set -l current_jobs (jobs | grep -v /usr/bin/fish | wc -l | tr -d '[:space:]')
+    set -l current_jobs (jobs | grep -v /usr/bin/fish | grep -v autojump | wc -l | tr -d '[:space:]')
     if [ "$current_jobs" != 0 ]
         tartar_prompt_transition red white
         echo -n $current_jobs
