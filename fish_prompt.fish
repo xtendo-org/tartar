@@ -63,7 +63,7 @@ function fish_prompt
     set -l git_dir (git rev-parse --git-dir 2> /dev/null)
     if test -n "$git_dir"
         set -l branch (git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/\1/')
-        if test "$branch" = 'master'
+        if test "$branch" = 'master' -o "$branch" = "main"
             set branch ''
         end
         set -l git_status (git status -s 2> /dev/null | grep -v "^??")
